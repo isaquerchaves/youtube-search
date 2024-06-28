@@ -1,7 +1,6 @@
 const apiKey = 'AIzaSyAcceA4_ILsiCtGeGQKixAqW1heCQMD2qo';
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-// Inicializar eventos para o componente de vídeos
 function initializeVideos() {
     document.getElementById('search-button').addEventListener('click', searchVideos);
     updateFavoritesCountInDrawer(); // Atualizar contagem no drawer ao inicializar

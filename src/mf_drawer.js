@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  loadComponent('videos'); // Load the default component
+  loadComponent('videos'); // Carregar os videos
   updateFavoritesCountInDrawer(); // Inicializar contagem de favoritos
 });
 
@@ -20,7 +20,7 @@ document.getElementById('favorites-link').addEventListener('click', function () 
 });
 
 function loadComponent(component) {
-  fetch(`components/${component}.html`)
+  fetch(`/src/components/${component}.html`)
       .then(response => response.text())
       .then(html => {
           document.getElementById('content').innerHTML = html;

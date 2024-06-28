@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  loadComponent('videos'); // Carregar os videos
+  loadComponent('mf_videos'); // Carregar os videos
   updateFavoritesCountInDrawer(); // Inicializar contagem de favoritos
 });
 
@@ -12,7 +12,7 @@ document.getElementById('mf_drawer').innerHTML = `
 `;
 
 document.getElementById('videos-link').addEventListener('click', function () {
-  loadComponent('videos');
+  loadComponent('mf_videos');
 });
 
 document.getElementById('favorites-link').addEventListener('click', function () {
@@ -20,7 +20,7 @@ document.getElementById('favorites-link').addEventListener('click', function () 
 });
 
 function loadComponent(component) {
-  fetch(`/src/components/${component}.html`)
+  fetch(`/src/components/${component}/${component}.html`)
       .then(response => response.text())
       .then(html => {
           document.getElementById('content').innerHTML = html;

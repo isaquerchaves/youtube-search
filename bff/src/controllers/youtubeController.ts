@@ -3,8 +3,10 @@ import axios from 'axios';
 
 export const searchVideos = async (req: Request, res: Response): Promise<void> => {
     const query = req.query.q as string;
+    const maxVideosResponse = 12;
+
     const apiKey = 'AIzaSyAcceA4_ILsiCtGeGQKixAqW1heCQMD2qo';
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${query}&key=${apiKey}`;
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${query}&maxResults=${maxVideosResponse}&key=${apiKey}`;
 
     try {
         const response = await axios.get(url);

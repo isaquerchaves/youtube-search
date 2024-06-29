@@ -1,3 +1,5 @@
+const favoriteVideos = new Set();
+
 function searchVideos(query) {
     fetch(`http://localhost:3000/api/youtube/search?q=${query}`)
         .then(response => response.json())
@@ -40,33 +42,85 @@ function createVideoElement(videoId, title, thumbnailUrl) {
     linkElement.appendChild(thumbnailImg);
     linkElement.appendChild(titleElement);
 
+    const favoriteButton = document.createElement('button');
+    favoriteButton.classList.add('favorite-button');
+    favoriteButton.textContent = favoriteVideos.has(videoId) ? '★' : '☆';
+    if (favoriteVideos.has(videoId)) {
+        favoriteButton.classList.add('selected');
+    }
+    favoriteButton.addEventListener('click', () => toggleFavorite(videoId, favoriteButton));
+
     videoElement.appendChild(linkElement);
+    videoElement.appendChild(favoriteButton);
 
     return videoElement;
 }
 
-
-// Função para alternar estado de favorito
-function toggleFavorite(videoId) {
-  // Lógica para adicionar/remover da lista de favoritos
-  // Atualizar contador de favoritos
-  const favCountElement = document.getElementById('favCount');
-  // Exemplo de como atualizar o contador (você precisa implementar a lógica de favoritos)
-  const currentCount = parseInt(favCountElement.textContent);
-  const newCount = videoIsFavorite(videoId) ? currentCount - 1 : currentCount + 1;
-  favCountElement.textContent = newCount;
+function handleSearchButtonClick() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query) {
+        searchVideos(query);
+        document.getElementById('searchInput').value = '';
+    }
 }
 
-// Função para lidar com a busca ao pressionar Enter
+// Event listener para o botão de busca
+const searchButton = document.getElementById('searchButton');
+searchButton.addEventListener('click', handleSearchButtonClick);
+
+// favorito
+function toggleFavorite(videoId, button) {
+    if (favoriteVideos.has(videoId)) {
+        favoriteVideos.delete(videoId);
+        button.textContent = '☆';
+        button.classList.remove('selected');
+    } else {
+        favoriteVideos.add(videoId);
+        button.textContent = '★';
+        button.classList.add('selected');
+    }
+    updateFavoritesContainer();
+}
+
+function updateFavoritesContainer() {
+    const favoritesContainer = document.getElementById('favoritesContainer');
+    favoritesContainer.innerHTML = '';
+
+    favoriteVideos.forEach(videoId => {
+        // Reutilize a lógica para buscar detalhes dos vídeos favoritos e renderizá-los
+        fetch(`http://localhost:3000/api/youtube/video?id=${videoId}`)
+            .then(response => response.json())
+            .then(data => {
+                const videoElement = createVideoElement(videoId, data.title, data.thumbnailUrl);
+                favoritesContainer.appendChild(videoElement);
+            })
+            .catch(error => console.error('Erro ao buscar vídeo favorito:', error));
+    });
+}
+
 function handleSearch(event) {
-  if (event.key === 'Enter') {
-      const query = event.target.value.trim();
-      if (query) {
-          searchVideos(query);
-      }
-  }
+    if (event.key === 'Enter' || event.type === 'click') {
+        const query = document.getElementById('searchInput').value.trim();
+        if (query) {
+            searchVideos(query);
+            document.getElementById('searchInput').value = ''; 
+        }
+    }
 }
 
-// Event listener para o campo de busca
 const searchInput = document.getElementById('searchInput');
 searchInput.addEventListener('keypress', handleSearch);
+
+const videosLink = document.getElementById('videosLink');
+const favoritesLink = document.getElementById('favoritesLink');
+
+videosLink.addEventListener('click', () => {
+    document.getElementById('mf_videos').style.display = 'block';
+    document.getElementById('mf_favorites').style.display = 'none';
+});
+
+favoritesLink.addEventListener('click', () => {
+    document.getElementById('mf_videos').style.display = 'none';
+    document.getElementById('mf_favorites').style.display = 'block';
+    updateFavoritesContainer();
+});

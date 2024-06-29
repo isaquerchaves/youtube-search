@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro-Frontend - YouTube Videos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="mf_drawer">
+            <nav>
+                <ul>
+                    <li><a href="#" id="videosLink">Vídeos</a></li>
+                    <li><a href="#" id="favoritesLink">Favoritos</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <section id="mf_videos">
+            <h2>Vídeos</h2>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar vídeos...">
+            </div>
+            <div id="videosContainer">
+                <!-- Vídeos serão renderizados aqui -->
+            </div>
+        </section>
+        <section id="mf_favorites" style="display: none;">
+            <h2>Favoritos</h2>
+            <div id="favoritesContainer">
+                <!-- Favoritos serão renderizados aqui -->
+            </div>
+        </section>
+    </div>
+
+    <script src="mf_drawer.js"></script>
+    <script src="mf_videos.js"></script>
+</body>
+</html>

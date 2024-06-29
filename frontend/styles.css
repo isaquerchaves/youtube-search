@@ -1,0 +1,81 @@
+/* Estilos gerais */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilos para mf_drawer */
+.mf_drawer {
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.mf_drawer nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.mf_drawer nav ul li {
+  margin-bottom: 10px;
+}
+
+.mf_drawer nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.mf_drawer nav ul li a:hover {
+  background-color: #555;
+}
+
+/* Estilos para mf_main */
+.mf_main {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.videos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.video-item {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.video-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.video-item h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.video-item a {
+  text-decoration: none;
+  color: #333;
+}

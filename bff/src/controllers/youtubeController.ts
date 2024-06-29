@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import axios from 'axios';
 import Favorite from '../models/Favorite';
 
-const apiKey = 'AIzaSyAcceA4_ILsiCtGeGQKixAqW1heCQMD2qo';
+const apiKey = 'AIzaSyAEcL3ef1SzlMoU89F58lvAq0TvHJcd7D0';
 
 // Buscar videos
 export const searchVideos = async (req: Request, res: Response): Promise<void> => {

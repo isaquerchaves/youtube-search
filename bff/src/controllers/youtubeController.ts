@@ -10,7 +10,7 @@ const apiKey = 'AIzaSyBWRIAve3-jvoiL6a1zrIiNPruFozF32Vw';
 // Buscar videos
 export const searchVideos = async (req: Request, res: Response): Promise<void> => {
     const query = req.query.q as string;
-    const maxVideosResponse = 4;
+    const maxVideosResponse = 12;
 
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${query}&maxResults=${maxVideosResponse}&key=${apiKey}`;
 

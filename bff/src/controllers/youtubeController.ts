@@ -2,12 +2,15 @@ import { Request, Response } from 'express';
 import axios from 'axios';
 import Favorite from '../models/Favorite';
 
-const apiKey = 'AIzaSyAEcL3ef1SzlMoU89F58lvAq0TvHJcd7D0';
+// ORIGINAL KEY = AIzaSyAEcL3ef1SzlMoU89F58lvAq0TvHJcd7D0
+// TESTING KEY = AIzaSyBWRIAve3-jvoiL6a1zrIiNPruFozF32Vw
+
+const apiKey = 'AIzaSyBWRIAve3-jvoiL6a1zrIiNPruFozF32Vw';
 
 // Buscar videos
 export const searchVideos = async (req: Request, res: Response): Promise<void> => {
     const query = req.query.q as string;
-    const maxVideosResponse = 12;
+    const maxVideosResponse = 4;
 
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${query}&maxResults=${maxVideosResponse}&key=${apiKey}`;
 

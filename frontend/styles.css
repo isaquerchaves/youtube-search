@@ -75,7 +75,7 @@ html {
 }
 
 
-/* mf_drawer */
+/* mf_videos */
 .mf_videos_container {
   flex: 1;
   padding: 50px;
@@ -93,18 +93,18 @@ html {
   position: relative;
   width: 25rem;
   border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px; /* Borda arredondada no lado esquerdo */
+  border-radius: 4px 0 0 4px;
 }
 
 #searchInput {
   font-size: 16px;
   padding: 10px;
-  width: 20rem; /* Ajuste conforme necessário */
+  width: 20rem;
   border: none;
 }
 
 #searchInput:focus {
-  outline: none; /* Remove a borda quando o input está focado */
+  outline: none;
 }
 
 #searchButton {
@@ -120,10 +120,11 @@ html {
 }
 
 .video-container {
+  padding-top: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 3rem;
   flex-wrap: wrap;  
 }
 

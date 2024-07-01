@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 import Favorite from '../models/Favorite';
+import dotenv from 'dotenv';
 
-// ORIGINAL KEY = AIzaSyAEcL3ef1SzlMoU89F58lvAq0TvHJcd7D0
-// TESTING KEY = AIzaSyBWRIAve3-jvoiL6a1zrIiNPruFozF32Vw
+dotenv.config();
 
-const apiKey = 'AIzaSyBWRIAve3-jvoiL6a1zrIiNPruFozF32Vw';
+const apiKey = process.env.YOUTUBE_KEY;
 
 // Buscar videos
 export const searchVideos = async (req: Request, res: Response): Promise<void> => {

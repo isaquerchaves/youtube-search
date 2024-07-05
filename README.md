@@ -1,4 +1,4 @@
-# Desafio Front-end iCasei
+# Desafio Front-end
 
 Este é um pequeno projeto desenvolvido para testar habilidades para a posição de Front-End.
 
